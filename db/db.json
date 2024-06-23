@@ -1,0 +1,48 @@
+{
+  "user": [
+    {
+      "id": "cf2b",
+      "name": "Morris",
+      "emai": "morris@test.com",
+      "password": ""
+    },
+    {
+      "id": "eada",
+      "name": "Daniel",
+      "emai": "daniel@test.com",
+      "password": ""
+    }
+  ],
+  "Products": [
+    {
+      "name": "Braids",
+      "cartegory": "Personalcare",
+      "cost": "880",
+      "id": "3"
+    },
+    {
+      "name": "Braids",
+      "cartegory": "Treatmentcare",
+      "cost": "750",
+      "id": "5"
+    },
+    {
+      "name": "Jack",
+      "cartegory": "American",
+      "cost": 420,
+      "id": "7b6e"
+    },
+    {
+      "id": "5582",
+      "name": "Lines",
+      "cartegory": "Spanish",
+      "cost": "300"
+    },
+    {
+      "id": "2897",
+      "name": "Lip balm",
+      "cartegory": "Beauty",
+      "cost": "250"
+    }
+  ]
+}
