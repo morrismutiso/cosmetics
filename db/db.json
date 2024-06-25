@@ -3,14 +3,38 @@
     {
       "id": "cf2b",
       "name": "Morris",
-      "emai": "morris@test.com",
+      "email": "morris@test.com",
       "password": ""
     },
     {
       "id": "eada",
       "name": "Daniel",
-      "emai": "daniel@test.com",
-      "password": ""
+      "email": "daniel@test.com",
+      "password": "1234"
+    },
+    {
+      "id": "1e36",
+      "name": "joseh",
+      "email": "joseh@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "2003",
+      "name": "kim",
+      "email": "kim@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "6c5f",
+      "name": "kim",
+      "email": "kim2@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "7d3e",
+      "name": "john",
+      "email": "john@test.com",
+      "password": "1111"
     }
   ],
   "Products": [
@@ -43,6 +67,46 @@
       "name": "Lip balm",
       "cartegory": "Beauty",
       "cost": "250"
+    }
+  ],
+  "productcartegory": [
+    {
+      "id": "2020",
+      "cartegotyname": "spar"
+    },
+    {
+      "id": "2c37",
+      "cartegoryname": "Rwandanese"
+    },
+    {
+      "id": "3030",
+      "cartegoryname": "Japanese"
+    }
+  ],
+  "services": [
+    {
+      "id": "1",
+      "name": "Braids",
+      "cartegory": "Personalcare",
+      "cost": "880"
+    }
+  ],
+  "customer": [
+    {
+      "id": "1",
+      "name": "Naivas"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "1",
+      "expensename": "Addition",
+      "cost": 420
+    },
+    {
+      "id": "8234",
+      "expensename": "Transport",
+      "cost": 200
     }
   ]
 }

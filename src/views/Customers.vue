@@ -1,27 +1,22 @@
   <template>
-    <div class="prodtable">
+  <div class="cust-table">
     <div class="header">
     <h1>
-     Products
+      Customers Page
     </h1>
-    <router-link to="/services"><button>Services</button></router-link>
-    <router-link to="/new product"><button>New Product + </button></router-link>
+    <button>New Customer + </button>
     </div>
     <table border=".5">
       <thead>
         <tr>
           <th>Id</th>
           <th>Name</th>
-          <th>Cartegory</th>
-          <th>Cost</th>
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in Products" :key="item.id">
+      <tr v-for="item in customer" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.name }}</td>
-        <td align="center">{{ item.cartegory }}</td>
-        <td align="center">{{ item.cost }}</td>
         <td>
           <button
             class="main-btn"
@@ -42,26 +37,27 @@
       </tr>
     </table>
   </div>
-    <div><router-view /></div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  name: "Home-Page",
+  name: "CustomerPage",
   data() {
     return {
       name: "",
-      Products: [],
+      customer: [],
       showInnerButtons: false,
     };
   },
 
   methods: {
     async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/Products/" + id);
+      let result = await axios.delete(
+        "http://localhost:3000/customer/" + id
+      );
       console.warn(result);
-      if (result == 200) {
+      if (result == 201) {
         this.loadData();
       }
     },
@@ -71,9 +67,9 @@ export default {
       if (!user) {
         this.$router.push({ name: "SignUp" });
       }
-      let result = await axios.get("http://localhost:3000/Products");
+      let result = await axios.get("http://localhost:3000/customer");
       console.warn(result);
-      this.Products = result.data;
+      this.customer = result.data;
     },
   },
   async mounted() {
@@ -83,7 +79,7 @@ export default {
 </script>
 
  <style scoped>
-.prodtable {
+.cust-table {
   display: flex;
   flex-direction: column;
   justify-items: center;

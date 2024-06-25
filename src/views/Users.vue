@@ -1,29 +1,24 @@
   <template>
-    <div class="prodtable">
+  <div class="user-table">
     <div class="header">
     <h1>
-     Products
+      Users
     </h1>
-    <router-link to="/services"><button>Services</button></router-link>
-    <router-link to="/new product"><button>New Product + </button></router-link>
+    <button>New User + </button>
     </div>
-    <table border=".5">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Cartegory</th>
-          <th>Cost</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tr v-for="item in Products" :key="item.id">
-        <td align="center">{{ item.id }}</td>
-        <td align="center">{{ item.name }}</td>
-        <td align="center">{{ item.cartegory }}</td>
-        <td align="center">{{ item.cost }}</td>
-        <td>
-          <button
+  <table border=".5">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>User Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tr v-for="item in user" :key="item.id">
+      <td align="center">{{ item.id }}</td>
+      <td align="center">{{ item.name }}</td>
+      <td>
+        <button
             class="main-btn"
             v-if="!showInnerButtons"
             @click="showInnerButtons = true"
@@ -38,28 +33,27 @@
               Delete
             </button>
           </div>
-        </td>
-      </tr>
-    </table>
+      </td>
+    </tr>
+  </table>
   </div>
-    <div><router-view /></div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  name: "Home-Page",
+  name: "UsersPage",
   data() {
     return {
       name: "",
-      Products: [],
-      showInnerButtons: false,
+      user: [],
+      showInnerButtons: false,   
     };
   },
 
   methods: {
     async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/Products/" + id);
+      let result = await axios.delete("http://localhost:3000/user/" + id);
       console.warn(result);
       if (result == 200) {
         this.loadData();
@@ -69,11 +63,11 @@ export default {
       let user = localStorage.getItem("user-info");
       this.name = JSON.parse(user).name;
       if (!user) {
-        this.$router.push({ name: "SignUp" });
+        this.$router.push({ name: "Users-Page" });
       }
-      let result = await axios.get("http://localhost:3000/Products");
+      let result = await axios.get("http://localhost:3000/user");
       console.warn(result);
-      this.Products = result.data;
+      this.user = result.data;
     },
   },
   async mounted() {
@@ -83,7 +77,7 @@ export default {
 </script>
 
  <style scoped>
-.prodtable {
+.user-table {
   display: flex;
   flex-direction: column;
   justify-items: center;

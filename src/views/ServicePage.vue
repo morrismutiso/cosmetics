@@ -2,9 +2,9 @@
     <div class="prodtable">
     <div class="header">
     <h1>
-     Products
+     Services
     </h1>
-    <router-link to="/services"><button>Services</button></router-link>
+    <router-link to="/products"><button>Products</button></router-link>
     <router-link to="/new product"><button>New Product + </button></router-link>
     </div>
     <table border=".5">

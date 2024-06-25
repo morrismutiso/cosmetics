@@ -1,27 +1,22 @@
   <template>
-    <div class="prodtable">
+  <div class="prodtable">
     <div class="header">
     <h1>
-     Products
+      Product Cartegory
     </h1>
-    <router-link to="/services"><button>Services</button></router-link>
-    <router-link to="/new product"><button>New Product + </button></router-link>
+    <button>New Cartegory + </button>
     </div>
     <table border=".5">
       <thead>
         <tr>
           <th>Id</th>
-          <th>Name</th>
-          <th>Cartegory</th>
-          <th>Cost</th>
+          <th>Cartegoty Name</th>
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in Products" :key="item.id">
+      <tr v-for="item in productcartegory" :key="item.id">
         <td align="center">{{ item.id }}</td>
-        <td align="center">{{ item.name }}</td>
-        <td align="center">{{ item.cartegory }}</td>
-        <td align="center">{{ item.cost }}</td>
+        <td align="center">{{ item.cartegoryname }}</td>
         <td>
           <button
             class="main-btn"
@@ -42,26 +37,27 @@
       </tr>
     </table>
   </div>
-    <div><router-view /></div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  name: "Home-Page",
+  name: "ProdCat",
   data() {
     return {
       name: "",
-      Products: [],
+      productcartegory: [],
       showInnerButtons: false,
     };
   },
 
   methods: {
     async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/Products/" + id);
+      let result = await axios.delete(
+        "http://localhost:3000/productcartegory" + id
+      );
       console.warn(result);
-      if (result == 200) {
+      if (result == 201) {
         this.loadData();
       }
     },
@@ -71,9 +67,9 @@ export default {
       if (!user) {
         this.$router.push({ name: "SignUp" });
       }
-      let result = await axios.get("http://localhost:3000/Products");
+      let result = await axios.get("http://localhost:3000/productcartegory");
       console.warn(result);
-      this.Products = result.data;
+      this.productcartegory = result.data;
     },
   },
   async mounted() {

@@ -1,11 +1,26 @@
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login img{
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 .login input, .add input, .update input, .add input{
     width: 300px;
+    outline: none;
+    border-radius: 5px;
     height: 40px;
     border: 1px solid pink;
 
   }
   .login button, .add button, .update button, .add button{
-    width: 320px;
+    width: 305px;
     height: 40px;
     border: 1px solid pink;
     border-radius: 5px;
@@ -13,11 +28,5 @@
     color: #fff;
     cursor: pointer;
   }
-  .login, .update, .add{
-    margin-top: 50px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
+
   

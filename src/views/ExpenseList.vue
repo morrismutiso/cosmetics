@@ -1,26 +1,23 @@
   <template>
-    <div class="prodtable">
+    <div class="expensetable">
     <div class="header">
     <h1>
-     Products
+      Expenses
     </h1>
-    <router-link to="/services"><button>Services</button></router-link>
-    <router-link to="/new product"><button>New Product + </button></router-link>
+    <router-link to="/new product"><button>New Expense + </button></router-link>
     </div>
     <table border=".5">
       <thead>
         <tr>
           <th>Id</th>
-          <th>Name</th>
-          <th>Cartegory</th>
+          <th>Expense Name</th>
           <th>Cost</th>
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in Products" :key="item.id">
+      <tr v-for="item in expenses" :key="item.id">
         <td align="center">{{ item.id }}</td>
-        <td align="center">{{ item.name }}</td>
-        <td align="center">{{ item.cartegory }}</td>
+        <td align="center">{{ item.expensename }}</td>
         <td align="center">{{ item.cost }}</td>
         <td>
           <button
@@ -48,18 +45,18 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Home-Page",
+  name: "Expense-List",
   data() {
     return {
       name: "",
-      Products: [],
+      expenses: [],
       showInnerButtons: false,
     };
   },
 
   methods: {
     async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/Products/" + id);
+      let result = await axios.delete("http://localhost:3000/expenses/" + id);
       console.warn(result);
       if (result == 200) {
         this.loadData();
@@ -71,9 +68,9 @@ export default {
       if (!user) {
         this.$router.push({ name: "SignUp" });
       }
-      let result = await axios.get("http://localhost:3000/Products");
+      let result = await axios.get("http://localhost:3000/expenses");
       console.warn(result);
-      this.Products = result.data;
+      this.expenses = result.data;
     },
   },
   async mounted() {
@@ -83,7 +80,7 @@ export default {
 </script>
 
  <style scoped>
-.prodtable {
+.expensetable {
   display: flex;
   flex-direction: column;
   justify-items: center;

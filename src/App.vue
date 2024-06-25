@@ -1,12 +1,20 @@
 <template>
-<!-- <Login/> -->
-<HeaderPage/>
+<div v-if="success">
+  <HeaderPage/>
+</div>
+<div v-else>
+  <Login />
+</div>
 </template>
 
 <script setup>
-// import { ref } from "vue";
+// defineProps({
+//   success: String,
+// })
+import { ref } from "vue";
 import HeaderPage from "./components/navHeader.vue"
-// import Login from "./components/LoginPage.vue"
+import Login from "./components/LoginPage.vue"
+const success = ref(true);
 
 </script>
 

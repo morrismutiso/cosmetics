@@ -6,45 +6,45 @@
           <img src="../assets/images/logo.jpeg" alt="profile" />
         </div>
         <div class="user-details">
-          <p class="title">beauty shop</p>
+          <p class="title">Beauty shop</p>
           <p class="name">Pawamwani</p>
         </div>
       </div>
       <div class="nav">
-        <p class="title dashboard">DASHBOARD</p>
+        <p class="title dashboard"><router-link to="/">DASHBOARD</router-link></p>
         <ul class="menu">
-          <router-link to="/home">
+          <router-link to="/">
             <img src="../assets/images/home.png" alt="" />
             <li class="link">Home</li>
           </router-link>
           <div>
             <router-link to="" @click="toggleMenu" style="color: #1f155b;" class="regdiv">
-              <img src="../assets/images/products.png" alt="" />
-              <li>Registration</li></router-link
-            >
-            <div class="dropdown" :style="{display: showMenu}">
-              <router-link to="/add"><li>Users</li></router-link>
-              <router-link to="/products"><li>Products/Services</li></router-link>
-              <router-link to="/add"><li>Product Categories</li></router-link>
-              <router-link to="/add"><li>Customers</li></router-link> 
+              <img src="../assets/images/menu.png" alt="" />
+              <li>Registration</li></router-link>
+            <div class="dropdown" :style="{display: showhide}">
+              <router-link to="/users"><li>Users</li></router-link>
+              <router-link to="/products"><li>Products | Services</li></router-link>
+              <router-link to="/prodcat"><li>Product Categories</li></router-link>
             </div>
           </div>
-          <router-link to="/add">
+          <router-link to="/author">
+            <img src="../assets/images/products.png" alt="" />
+            <li class="link">Sales</li></router-link>
+            <router-link to="/about">
             <img src="../assets/images/expenses.png" alt="" />
-            <li class="link">Expenses</li></router-link
-          >
-          <router-link to="/update">
-            <img src="../assets/images/reports.png" alt="" />
-            <li class="link">Reports</li></router-link
-          >
+            <li class="link">Appointments</li></router-link>
           <router-link to="/expenses">
+            <img src="../assets/images/expenses.png" alt="" />
+            <li class="link">Expenses</li></router-link>
+          <router-link to="/products">
+            <img src="../assets/images/reports.png" alt="" />
+            <li class="link">Reports</li></router-link>
+          <router-link to="/about">
             <img src="../assets/images/about.png" alt="" />
-            <li class="link">About</li></router-link
-          >
-          <router-link to="/reports">
-            <img src="../assets/images/home.png" alt="" />
-            <li class="link">Logout</li></router-link
-          >
+            <li class="link">About</li></router-link>
+          <router-link to="/login">
+            <img src="../assets/images/logout.png" alt="" />
+            <li class="link">Logout</li></router-link>
         </ul>
       </div>
     </div>
@@ -55,7 +55,18 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
+const showhide = ref("none");
+
+function toggleMenu(){
+  if(showhide.value == "none"){
+    showhide.value = "block";
+  }
+  else if(showhide.value == "block"){
+    showhide.value = "none";
+  }
+}
 // import axios from "axios";
 // export default {
 //   name: "Home",
@@ -66,6 +77,7 @@ import { RouterLink, RouterView } from "vue-router";
 //     },
 //   },
 // };
+
 </script>
 
 <style scoped>
