@@ -4,24 +4,27 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  border: rgb(104, 250, 206,0.6) 2px solid;
+  border-radius: 5px;
+  background-color: rgb(104, 250, 206,0.2);
 }
 .login img{
-  width: 84px;
-  height: 84px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
   overflow: hidden;
 }
 .login input, .add input, .update input, .add input{
-    width: 300px;
+    width: 280px;
     outline: none;
     border-radius: 5px;
-    height: 40px;
+    height: 30px;
     border: 1px solid pink;
 
   }
   .login button, .add button, .update button, .add button{
-    width: 305px;
-    height: 40px;
+    width: 285px;
+    height: 30px;
     border: 1px solid pink;
     border-radius: 5px;
     background: skyblue;

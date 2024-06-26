@@ -29,7 +29,7 @@
             <button class="updete">
               <router-link :to="'/update/' + item.id">Update</router-link>
             </button>
-            <button class="delete" v-on:click="deleteProduct(item.id)">
+            <button class="delete" v-on:click="deleteItem(item.id)">
               Delete
             </button>
           </div>
@@ -45,36 +45,31 @@ export default {
   name: "ProdCat",
   data() {
     return {
-      name: "",
       productcartegory: [],
       showInnerButtons: false,
     };
   },
-
-  methods: {
-    async deleteProduct(id) {
-      let result = await axios.delete(
-        "http://localhost:3000/productcartegory" + id
-      );
-      console.warn(result);
-      if (result == 201) {
-        this.loadData();
-      }
-    },
-    async loadData() {
-      let user = localStorage.getItem("user-info");
-      this.name = JSON.parse(user).name;
-      if (!user) {
-        this.$router.push({ name: "SignUp" });
-      }
-      let result = await axios.get("http://localhost:3000/productcartegory");
-      console.warn(result);
+  async created(){
+    fetch('/data/db.json')
+    let result = await axios.get("http://localhost:3000/productcartegory");
       this.productcartegory = result.data;
+  },
+    mounted(){
+    this.fetchData();
+  },
+  methods:{
+    async fetchData(){
+      try{
+      const response = await axios.get('/db.json');
+      this.productcartegory = response.data;
+    } catch(error){
+      console.error('Error fetching data:',error);
+    }
     },
-  },
-  async mounted() {
-    this.loadData();
-  },
+    deleteItem(id){
+      this.productcartegory = this.productcartegory.filter(item => item.id !== id);
+    }
+  }
 };
 </script>
 

@@ -1,21 +1,36 @@
 <template>
-<div v-if="success">
-  <HeaderPage/>
+<div v-if="isLoggedin">
+  <div v-if="messagebox" class="msgdiv">
+  <span>{{ message }}</span>
+</div>
+<HeaderPage/>
 </div>
 <div v-else>
-  <Login />
+  <Login @success="showhidelog" />
 </div>
 </template>
 
 <script setup>
-// defineProps({
-//   success: String,
-// })
 import { ref } from "vue";
 import HeaderPage from "./components/navHeader.vue"
 import Login from "./components/LoginPage.vue"
-const success = ref(true);
+const isLoggedin = ref(false);
 
+const showhidelog = (msg) =>{
+  isLoggedin.value = true;
+  successMsg(msg)
+}
+
+const messagebox = ref(false);
+const message = ref("");
+
+const successMsg = (msg) =>{
+  messagebox.value = true;
+  message.value = msg;
+  setTimeout(() => {
+    messagebox.value = false;
+  }, 5000);
+}
 </script>
 
 <style>
@@ -32,6 +47,19 @@ body{
 }
 .logo{
   width: 100px;
+}
+.msgdiv{
+  background-color: rgb(133, 223, 193);
+  padding: 15px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: fit-content;
+  color: rgb(7, 68, 17);
+  top: 10px;
+  font-size: 13px;
+  z-index: 20px;
 }
 
 </style>

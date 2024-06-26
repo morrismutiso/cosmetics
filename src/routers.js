@@ -1,6 +1,6 @@
 import Home from './views/HomePage.vue';
 import Login from './components/LoginPage.vue';
-import Products from './views/ProductsPage.vue';
+import ProductsPage from './views/ProductsPage.vue';
 import Services from './views/ServicePage.vue';
 import ProdCat from './views/ProdCat.vue';
 import UsersPage from './views/Users.vue';
@@ -40,8 +40,8 @@ const routes = [
         path:"/"
     },
        {
-        name:"Products",
-        component:Products,
+        name:"ProductsPage",
+        component:ProductsPage,
         path:"/products"
     },
     {

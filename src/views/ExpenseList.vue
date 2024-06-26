@@ -28,10 +28,8 @@
             Action
           </button>
           <div class="inner-btns" v-else>
-            <button class="updete">
-              <router-link :to="'/update/' + item.id">Update</router-link>
-            </button>
-            <button class="delete" v-on:click="deleteProduct(item.id)">
+            <router-link to="/update/"><button class="updete">Edit</button></router-link>
+            <button class="delete" v-on:click="deleteItem(item.id)">
               Delete
             </button>
           </div>
@@ -45,38 +43,35 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Expense-List",
   data() {
     return {
-      name: "",
       expenses: [],
       showInnerButtons: false,
     };
   },
-
-  methods: {
-    async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/expenses/" + id);
-      console.warn(result);
-      if (result == 200) {
-        this.loadData();
-      }
-    },
-    async loadData() {
-      let user = localStorage.getItem("user-info");
-      this.name = JSON.parse(user).name;
-      if (!user) {
-        this.$router.push({ name: "SignUp" });
-      }
-      let result = await axios.get("http://localhost:3000/expenses");
-      console.warn(result);
+async created(){
+    fetch('/data/db.json')
+    let result = await axios.get("http://localhost:3000/expenses");
       this.expenses = result.data;
+   },
+  mounted(){
+    this.fetchData();
+  },
+  methods:{
+    deleteItem(id){
+      this.expenses = this.expenses.filter(item => item.id !== id);
     },
-  },
-  async mounted() {
-    this.loadData();
-  },
-};
+
+    async fetchData(){
+      try{
+      const response = await axios.get('/db.json');
+      this.expenses = response.data;
+    } catch(error){
+      console.error('Error fetching data:',error);
+    }
+    },
+  }
+  };
 </script>
 
  <style scoped>

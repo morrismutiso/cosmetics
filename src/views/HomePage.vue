@@ -5,7 +5,10 @@ import FooterPage from '@/components/FooterPage.vue';
 <template>
   <div class="homediv">
     <div class="topview">
-      <input type="search" class="search" />
+      <div class="inputdiv">
+        <input type="search" class="search" style="border:none"/>
+        <img src="@/assets/images/search.png" style="width:20px;height:20px;padding:2px">
+        </div>
       <div class="profile">
         <img src="@/assets/images/profile.png" />
       </div>
@@ -15,17 +18,25 @@ import FooterPage from '@/components/FooterPage.vue';
     </div>
     <div class="bottomview">
       <div class="items">
-        <img src="../assets/images/products.png" alt="" />
-        <h3>Category 1</h3></div>
+        <img src="@/assets/images/perfumes.png" alt="" />
+        <span>Perfume</span>
+      </div>
       <div class="items">
-        <img src="../assets/images/products.png" alt="" />
-        <h3>Category 2</h3></div>
-      <div class="items"><img src="../assets/images/products.png" alt="" />
-        <h3>Category 3</h3></div>
-      <div class="items"><img src="../assets/images/products.png" alt="" />
-        <h3>Category 4</h3></div>
-      <div class="items"><img src="../assets/images/products.png" alt="" />
-        <h3>Category 5</h3></div>
+        <img src="@/assets/images/oral.jpeg" alt="" />
+        <span>Oral Care</span>
+      </div>
+      <div class="items">
+        <img src="@/assets/images/body.png" alt="" />
+        <span>Body Care</span>
+      </div>
+      <div class="items">
+        <img src="@/assets/images/sun.png" alt="" />
+        <span>Sun Care</span>
+      </div>
+      <div class="items">
+        <img src="@/assets/images/skin.png" alt="" />
+        <span>Skin Care</span>
+      </div>
     </div>
     <FooterPage/>
   </div>
@@ -47,13 +58,22 @@ import FooterPage from '@/components/FooterPage.vue';
   gap: 10px;
   margin-top: 20px;
 }
-.topview input{
+.topview .inputdiv{
     height: 25px;
     width: 200px;
     margin: 0 auto;/* to center search input button*/
-    border-radius: 5px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    /* background-color: green; */
+    border: 1px solid rgb(102, 91, 91);
+}
+.topview input{
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
     outline: none;
-    border: 1px solid rgb(218, 206, 206);
+    border: none;
 }
 .topview img {
   width: 44px;
@@ -83,11 +103,15 @@ import FooterPage from '@/components/FooterPage.vue';
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center; /* center horizontally */
-  align-items: center; /* center vertically */
+  /* justify-content: center; 
+  align-items: center;  */
   width: 150px;
   height: 100px;
   border: rgb(104, 250, 206,0.6) 2px solid;
   background-color: rgb(104, 250, 206,0.2);
+}
+.items img{
+  width: 100%;
+  height: 100%;
 }
 </style>

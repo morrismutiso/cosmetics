@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" >
     <div class="sidebar">
       <div class="head">
         <div class="logonav">
@@ -19,7 +19,7 @@
           </router-link>
           <div>
             <router-link to="" @click="toggleMenu" style="color: #1f155b;" class="regdiv">
-              <img src="../assets/images/menu.png" alt="" />
+              <img src="../assets/images/registration.png" alt="" />
               <li>Registration</li></router-link>
             <div class="dropdown" :style="{display: showhide}">
               <router-link to="/users"><li>Users</li></router-link>
@@ -28,7 +28,7 @@
             </div>
           </div>
           <router-link to="/author">
-            <img src="../assets/images/products.png" alt="" />
+            <img src="../assets/images/sales.png" alt="" />
             <li class="link">Sales</li></router-link>
             <router-link to="/about">
             <img src="../assets/images/expenses.png" alt="" />
@@ -171,7 +171,6 @@ function toggleMenu(){
 .display {
   flex: 1;
 }
-
 a:hover {
   background-color: #beb0b0;
   color: red;
@@ -191,6 +190,7 @@ a {
   border-radius: 10px;
   align-items: center;
   text-decoration: none;
+  color: #1f155b;
 }
 a img {
   width: 20px;

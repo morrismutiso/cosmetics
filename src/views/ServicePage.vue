@@ -4,7 +4,7 @@
     <h1>
      Services
     </h1>
-    <router-link to="/products"><button>Products</button></router-link>
+    <router-link to="/products"><button style="background:#1f155b;color:#fff">Switch To Products</button></router-link>
     <router-link to="/new product"><button>New Product + </button></router-link>
     </div>
     <table border=".5">
@@ -17,7 +17,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in Products" :key="item.id">
+      <tr v-for="item in services" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.name }}</td>
         <td align="center">{{ item.cartegory }}</td>
@@ -32,9 +32,9 @@
           </button>
           <div class="inner-btns" v-else>
             <button class="updete">
-              <router-link :to="'/update/' + item.id">Update</router-link>
+              <router-link :to="'/update/' + item.id">Edit</router-link>
             </button>
-            <button class="delete" v-on:click="deleteProduct(item.id)">
+            <button class="delete" v-on:click="deleteItem(item.id)">
               Delete
             </button>
           </div>
@@ -48,38 +48,35 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Home-Page",
+  name: "ProductsPage",
   data() {
     return {
-      name: "",
-      Products: [],
+      services: [],
       showInnerButtons: false,
     };
   },
-
-  methods: {
-    async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/Products/" + id);
-      console.warn(result);
-      if (result == 200) {
-        this.loadData();
-      }
-    },
-    async loadData() {
-      let user = localStorage.getItem("user-info");
-      this.name = JSON.parse(user).name;
-      if (!user) {
-        this.$router.push({ name: "SignUp" });
-      }
-      let result = await axios.get("http://localhost:3000/Products");
-      console.warn(result);
-      this.Products = result.data;
-    },
+  async created(){
+    fetch('/data/db.json')
+    let result = await axios.get("http://localhost:3000/services");
+      this.services = result.data;
+   },
+  mounted(){
+    this.fetchData();
   },
-  async mounted() {
-    this.loadData();
-  },
-};
+  methods:{
+    async fetchData(){
+      try{
+      const response = await axios.get('/db.json');
+      this.services = response.data;
+    } catch(error){
+      console.error('Error fetching data:',error);
+    }
+    },
+    deleteItem(id){
+      this.services = this.services.filter(item => item.id !== id);
+    }
+  }
+  };
 </script>
 
  <style scoped>

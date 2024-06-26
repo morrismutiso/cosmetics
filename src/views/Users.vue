@@ -29,7 +29,7 @@
             <button class="updete">
               <router-link :to="'/update/' + item.id">Update</router-link>
             </button>
-            <button class="delete" v-on:click="deleteProduct(item.id)">
+            <button class="delete" v-on:click="deleteItem(item.id)">
               Delete
             </button>
           </div>
@@ -50,29 +50,27 @@ export default {
       showInnerButtons: false,   
     };
   },
-
-  methods: {
-    async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/user/" + id);
-      console.warn(result);
-      if (result == 200) {
-        this.loadData();
-      }
-    },
-    async loadData() {
-      let user = localStorage.getItem("user-info");
-      this.name = JSON.parse(user).name;
-      if (!user) {
-        this.$router.push({ name: "Users-Page" });
-      }
-      let result = await axios.get("http://localhost:3000/user");
-      console.warn(result);
+  async created(){
+    fetch('/data/db.json')
+    let result = await axios.get("http://localhost:3000/user");
       this.user = result.data;
+   },
+  mounted(){
+    this.fetchData();
+  },
+  methods:{
+    async fetchData(){
+      try{
+      const response = await axios.get('/db.json');
+      this.user = response.data;
+    } catch(error){
+      console.error('Error fetching data:',error);
+    }
     },
-  },
-  async mounted() {
-    this.loadData();
-  },
+    deleteItem(id){
+      this.user = this.user.filter(item => item.id !== id);
+    }
+  }
 };
 </script>
 

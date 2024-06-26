@@ -31,10 +31,52 @@
       "password": "12345"
     },
     {
+      "id": "6ckf",
+      "name": "kim",
+      "email": "kim@2",
+      "password": "12"
+    },
+    {
       "id": "7d3e",
       "name": "john",
       "email": "john@test.com",
       "password": "1111"
+    },
+    {
+      "id": "441a",
+      "name": "mary",
+      "email": "mary@test",
+      "password": "1234"
+    },
+    {
+      "id": "b3c2",
+      "name": "jane",
+      "email": "jane@2",
+      "password": "1234"
+    },
+    {
+      "id": "6cc0",
+      "name": "data",
+      "email": "data@2",
+      "password": "12"
+    },
+    {
+      "id": "4773",
+      "name": "susan",
+      "email": "susan@test.com",
+      "password": "1234"
+    },
+    {
+      "id": "e020",
+      "name": "mose",
+      "email": "mose@2",
+      "password": "12"
+    },
+    {
+      "id": "78ab",
+      "name": "erico",
+      "email": "erico@2",
+      "password": "12"
     }
   ],
   "Products": [
@@ -72,7 +114,7 @@
   "productcartegory": [
     {
       "id": "2020",
-      "cartegotyname": "spar"
+      "cartegoryname": "spar"
     },
     {
       "id": "2c37",
@@ -89,6 +131,12 @@
       "name": "Braids",
       "cartegory": "Personalcare",
       "cost": "880"
+    },
+    {
+      "id": "edd6",
+      "name": "spar",
+      "cartegory": "long",
+      "cost": "500"
     }
   ],
   "customer": [

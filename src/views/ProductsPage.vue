@@ -4,8 +4,8 @@
     <h1>
      Products
     </h1>
-    <router-link to="/services"><button>Services</button></router-link>
-    <router-link to="/new product"><button>New Product + </button></router-link>
+    <router-link to="/services"><button style="background:#1f155b;color:#fff">Switch To Services</button></router-link>
+    <router-link to="/add"><button>New Product + </button></router-link>
     </div>
     <table border=".5">
       <thead>
@@ -32,7 +32,7 @@
           </button>
           <div class="inner-btns" v-else>
             <button class="updete">
-              <router-link :to="'/update/' + item.id">Update</router-link>
+              <router-link :to="'/update/' + item.id">Edit</router-link>
             </button>
             <button class="delete" v-on:click="deleteProduct(item.id)">
               Delete
@@ -48,37 +48,34 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Home-Page",
+  name: "ProductsPage",
   data() {
     return {
-      name: "",
       Products: [],
       showInnerButtons: false,
     };
   },
-
-  methods: {
-    async deleteProduct(id) {
-      let result = await axios.delete("http://localhost:3000/Products/" + id);
-      console.warn(result);
-      if (result == 200) {
-        this.loadData();
-      }
-    },
-    async loadData() {
-      let user = localStorage.getItem("user-info");
-      this.name = JSON.parse(user).name;
-      if (!user) {
-        this.$router.push({ name: "SignUp" });
-      }
-      let result = await axios.get("http://localhost:3000/Products");
-      console.warn(result);
+  async created(){
+    fetch('/data/db.json')
+    let result = await axios.get("http://localhost:3000/Products");
       this.Products = result.data;
+   },
+     mounted(){
+    this.fetchData();
+  },
+  methods:{
+    async fetchData(){
+      try{
+      const response = await axios.get('/db.json');
+      this.Products = response.data;
+    } catch(error){
+      console.error('Error fetching data:',error);
+    }
     },
-  },
-  async mounted() {
-    this.loadData();
-  },
+    deleteItem(id){
+      this.Products = this.Products.filter(item => item.id !== id);
+    }
+  }
 };
 </script>
 
@@ -91,10 +88,10 @@ export default {
   background-color: rgb(248, 238, 248);
 }
 tr:nth-child(even){
-    background-color: #f2f2f2; /*Light grey*/
+    background-color: #f2f2f2; 
 }
 tr:nth-child(odd){
-    background-color: #ffffff; /*White*/
+    background-color: #ffffff; 
 }
 .header {
   display: flex;
@@ -141,7 +138,6 @@ table .inner-btns {
   width: 50px;
 }
 table .updete {
-  /* border: 14px; */
   padding: 5px;
   border-radius: 3px;
   background: #007bff;

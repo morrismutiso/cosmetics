@@ -1,4 +1,10 @@
 <template>
+<div v-if="messagebox" class="msgdiv">
+  <span>{{ message }}</span>
+</div>
+<div v-if="messagebox1" class="errordiv">
+  <span>{{ message }}</span>
+</div>
 <!-- login form -->
     <div class="login" v-show="toggleLogin">
       <h3>Pawamwani Beauty Shop</h3>
@@ -48,8 +54,7 @@ function swapRegister(){
 
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-// const route = useRoute();
-const emit = defineEmits(['login', 'success'])
+const emit = defineEmits(['success'])
 const router = useRouter();
 const name = ref("");
 const email = ref("");
@@ -58,7 +63,8 @@ const register = async() =>{
   try{
      const response = await axios.get( `http://localhost:3000/user?email=${email.value}`);
       if(response.data.length > 0){
-        alert("User already exists");
+        const msg = "User already exists";
+        errorMsg(msg)
       }
       else{
         let result = await axios.post("http://localhost:3000/user", {
@@ -67,7 +73,9 @@ const register = async() =>{
               password:password.value            
             });
         if(result){
-          alert("Registered successfully")
+          const msg = "Registration Successful";
+          successMsg(msg);
+          
         }
       }
   }
@@ -80,12 +88,11 @@ const login = async() =>{
   try{
      const response = await axios.get( `http://localhost:3000/user?email=${email.value}&password=${password.value}`);
       if(response.data.length > 0){
-        alert("Login successful");
-        emit('success')
-        // router.push({name: 'Home'});
+        emit('success', "Login successful");
+        router.push({name: 'Home'});
       }
       else{
-        alert('Invalid email or passsword')
+        errorMsg("Invalid email or password x");
       }
   }
   catch(error){
@@ -93,8 +100,26 @@ const login = async() =>{
   }
 }
 
+const messagebox1 = ref(false);
+const messagebox = ref(false);
+const message = ref("");
 
 
+const errorMsg = (msg) =>{
+  messagebox1.value = true;
+  message.value = msg;
+  setTimeout(() => {
+    messagebox1.value = false;
+  },3000);
+}
+
+const successMsg = (msg) =>{
+  messagebox.value = true;
+  message.value = msg;
+  setTimeout(() => {
+    messagebox.value = false;
+  }, 3000);
+}
 
 // import axios from 'axios'
 // export default {
@@ -173,6 +198,34 @@ a{
 .loginform{
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
+  
+}
+.msgdiv{
+  background-color: rgb(133, 223, 193);
+  padding: 15px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: fit-content;
+  color: rgb(7, 68, 17);
+  top: 10px;
+  font-size: 13px;
+  z-index: 20px;
+}
+
+.errordiv{
+  background-color: rgb(224, 174, 174);
+  padding: 15px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: fit-content;
+  color: brown;
+  top: 10px;
+  font-size: 13px;
+  z-index: 20px;
 }
 </style>
