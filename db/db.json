@@ -87,7 +87,7 @@
       "id": "3"
     },
     {
-      "name": "Braids",
+      "name": "Braids1",
       "cartegory": "Treatmentcare",
       "cost": "750",
       "id": "5"
@@ -133,10 +133,10 @@
       "cost": "880"
     },
     {
-      "id": "edd6",
-      "name": "spar",
-      "cartegory": "long",
-      "cost": "500"
+      "id": "3",
+      "name": "Braids2",
+      "cartegory": "Personalcare2",
+      "cost": "880"
     }
   ],
   "customer": [

@@ -12,6 +12,8 @@ import RegProd from './components/AddProduct.vue';
 import ExpenseList from './views/ExpenseList.vue';
 import AboutPage from './components/AboutPage.vue';
 import AuthorPage from './components/AuthorPage.vue';
+import Pos from './views/POS.vue';
+import SalesList from './views/SalesList.vue';
 
 const routes = [
     {
@@ -89,6 +91,16 @@ const routes = [
         component:Update,
         path:"/update/:id",
     },
+    {
+        name:"Pos",
+        component:Pos,
+        path:"/pos",
+    },
+    {
+        name:"SalesList",
+        component:SalesList,
+        path:"/saleslist",
+    }, 
 ];
 
 const router = createRouter({

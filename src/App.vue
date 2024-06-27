@@ -3,10 +3,10 @@
   <div v-if="messagebox" class="msgdiv">
   <span>{{ message }}</span>
 </div>
-<HeaderPage/>
+<Login @success="showhidelog" />
 </div>
 <div v-else>
-  <Login @success="showhidelog" />
+  <HeaderPage/>
 </div>
 </template>
 

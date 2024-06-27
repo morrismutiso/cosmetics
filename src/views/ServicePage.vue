@@ -26,7 +26,7 @@
           <button
             class="main-btn"
             v-if="!showInnerButtons"
-            @click="showInnerButtons = true"
+            @click="showInnerBtns(item.id)"
           >
             Action
           </button>
@@ -56,7 +56,7 @@ export default {
     };
   },
   async created(){
-    fetch('/data/db.json')
+    // fetch('/data/db.json')
     let result = await axios.get("http://localhost:3000/services");
       this.services = result.data;
    },
@@ -72,8 +72,12 @@ export default {
       console.error('Error fetching data:',error);
     }
     },
-    deleteItem(id){
+    async deleteItem(id){
       this.services = this.services.filter(item => item.id !== id);
+      await axios.delete(`http://localhost:3000/services/${id}`);
+    },
+    showInnerBtns(id){
+      console.log("my id is", id);
     }
   }
   };

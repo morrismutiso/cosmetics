@@ -27,9 +27,15 @@
               <router-link to="/prodcat"><li>Product Categories</li></router-link>
             </div>
           </div>
-          <router-link to="/author">
-            <img src="../assets/images/sales.png" alt="" />
-            <li class="link">Sales</li></router-link>
+          <div>
+            <router-link to="" @click="toggleMenu1" style="color: #1f155b;" class="regdiv">
+              <img src="../assets/images/registration.png" alt="" />
+              <li>Sales</li></router-link>
+            <div class="dropdown" :style="{display: showhide1}">
+              <router-link to="/pos"><li>POS</li></router-link>
+              <router-link to="/saleslist"><li>Sales List</li></router-link>
+            </div>
+          </div>
             <router-link to="/about">
             <img src="../assets/images/expenses.png" alt="" />
             <li class="link">Appointments</li></router-link>
@@ -58,6 +64,7 @@
 import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 const showhide = ref("none");
+const showhide1 = ref("none");
 
 function toggleMenu(){
   if(showhide.value == "none"){
@@ -65,6 +72,15 @@ function toggleMenu(){
   }
   else if(showhide.value == "block"){
     showhide.value = "none";
+  }
+}
+
+function toggleMenu1(){
+  if(showhide1.value == "none"){
+    showhide1.value = "block";
+  }
+  else if(showhide1.value == "block"){
+    showhide1.value = "none";
   }
 }
 // import axios from "axios";
