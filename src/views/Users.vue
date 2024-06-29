@@ -67,8 +67,12 @@ export default {
       console.error('Error fetching data:',error);
     }
     },
-    deleteItem(id){
+    async deleteItem(id){
       this.user = this.user.filter(item => item.id !== id);
+      await axios.delete(`http://localhost:3000/user/${id}`);
+    },
+    showInnerBtns(id){
+      console.log("my id is", id);
     }
   }
 };

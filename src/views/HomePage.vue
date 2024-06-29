@@ -10,7 +10,7 @@ import FooterPage from '@/components/FooterPage.vue';
         <img src="@/assets/images/search.png" style="width:20px;height:20px;padding:2px">
         </div>
       <div class="profile">
-        <img src="@/assets/images/profile.png" />
+        <img src="@/assets/images/logo.jpeg" />
       </div>
     </div>
     <div class="centerview">

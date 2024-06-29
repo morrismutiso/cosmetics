@@ -43,6 +43,7 @@
 <script>
 import axios from "axios";
 export default {
+  name: "expensesPage",
   data() {
     return {
       expenses: [],
@@ -58,10 +59,6 @@ async created(){
     this.fetchData();
   },
   methods:{
-    deleteItem(id){
-      this.expenses = this.expenses.filter(item => item.id !== id);
-    },
-
     async fetchData(){
       try{
       const response = await axios.get('/db.json');
@@ -70,6 +67,13 @@ async created(){
       console.error('Error fetching data:',error);
     }
     },
+    async deleteItem(id){
+      this.expenses = this.expenses.filter(item => item.id !== id);
+      await axios.delete(`http://localhost:3000/expenses/${id}`);
+    },
+    showInnerBtns(id){
+      console.log("my id is", id);
+    }
   }
   };
 </script>

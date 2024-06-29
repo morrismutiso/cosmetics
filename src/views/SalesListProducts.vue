@@ -2,43 +2,27 @@
     <div class="prodtable">
     <div class="header">
     <h1>
-     Products
+     Sales list - Products
     </h1>
-    <router-link to="/services"><button style="background:#1f155b;color:#fff">Switch To Services</button></router-link>
-    <router-link to="/add"><button>New Product + </button></router-link>
     </div>
     <table border=".5">
       <thead>
         <tr>
           <th>Id</th>
-          <th>Name</th>
-          <th>Cartegory</th>
+          <th>Date</th>
+          <th>Product Name</th>
           <th>Cost</th>
-          <th>Action</th>
+          <th>quantity</th>
+          <th>Amount</th>
         </tr>
       </thead>
-      <tr v-for="item in Products" :key="item.id">
+      <tr v-for="item in salesProducts" :key="item.id">
         <td align="center">{{ item.id }}</td>
+        <td align="center">{{ item.date }}</td>
         <td align="center">{{ item.name }}</td>
-        <td align="center">{{ item.cartegory }}</td>
         <td align="center">{{ item.cost }}</td>
-        <td>
-          <button
-            class="main-btn"
-            v-if="!showInnerButtons"
-            @click="showInnerButtons = true"
-          >
-            Action
-          </button>
-          <div class="inner-btns" v-else>
-            <button class="updete">
-              <router-link :to="'/update/' + item.id">Edit</router-link>
-            </button>
-            <button class="delete" v-on:click="deleteItem(item.id)">
-              Delete
-            </button>
-          </div>
-        </td>
+        <td align="center">{{ item.quantity }}</td>
+        <td align="center">{{ item.amount }}</td>
       </tr>
     </table>
   </div>
@@ -48,17 +32,15 @@
 <script>
 import axios from "axios";
 export default {
-  name: "ProductsPage",
+  name: "SalesList",
   data() {
     return {
-      Products: [],
-      showInnerButtons: false,
+      salesProducts: [],
     };
   },
   async created(){
-    // fetch('/data/db.json')
-    let result = await axios.get("http://localhost:3000/Products");
-      this.Products = result.data;
+    let result = await axios.get("http://localhost:3000/salesProducts");
+      this.salesProducts = result.data;
    },
      mounted(){
     this.fetchData();
@@ -66,19 +48,12 @@ export default {
  methods:{
     async fetchData(){
       try{
-      const response = await axios.get('/db.json');
-      this.Products = response.data;
+      const response = await axios.get("http://localhost:3000/salesProducts");
+      this.salesProducts = response.data;
     } catch(error){
       console.error('Error fetching data:',error);
     }
     },
-    async deleteItem(id){
-      this.Products = this.Products.filter(item => item.id !== id);
-      await axios.delete(`http://localhost:3000/Products/${id}`);
-    },
-    showInnerBtns(id){
-      console.log("my id is", id);
-    }
   }
 };
 </script>

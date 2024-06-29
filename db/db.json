@@ -25,18 +25,6 @@
       "password": "12345"
     },
     {
-      "id": "6c5f",
-      "name": "kim",
-      "email": "kim2@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "6ckf",
-      "name": "kim",
-      "email": "kim@2",
-      "password": "12"
-    },
-    {
       "id": "7d3e",
       "name": "john",
       "email": "john@test.com",
@@ -55,12 +43,6 @@
       "password": "1234"
     },
     {
-      "id": "6cc0",
-      "name": "data",
-      "email": "data@2",
-      "password": "12"
-    },
-    {
       "id": "4773",
       "name": "susan",
       "email": "susan@test.com",
@@ -70,12 +52,6 @@
       "id": "e020",
       "name": "mose",
       "email": "mose@2",
-      "password": "12"
-    },
-    {
-      "id": "78ab",
-      "name": "erico",
-      "email": "erico@2",
       "password": "12"
     }
   ],
@@ -103,12 +79,6 @@
       "name": "Lines",
       "cartegory": "Spanish",
       "cost": "300"
-    },
-    {
-      "id": "2897",
-      "name": "Lip balm",
-      "cartegory": "Beauty",
-      "cost": "250"
     }
   ],
   "productcartegory": [
@@ -147,14 +117,45 @@
   ],
   "expenses": [
     {
-      "id": "1",
-      "expensename": "Addition",
-      "cost": 420
-    },
-    {
       "id": "8234",
       "expensename": "Transport",
       "cost": 200
     }
+  ],
+  "salesProducts": [
+    {
+      "id": null,
+      "date": "2024-06-29",
+      "name": "Braids",
+      "cost": "880",
+      "quantity": 4,
+      "amount": 3520
+    },
+    {
+      "id": null,
+      "date": "2024-06-29",
+      "name": "Jack",
+      "cost": 420,
+      "quantity": 3,
+      "amount": 1260
+    }
+  ],
+    "servicesList": [
+      {
+        "id": null,
+        "date": "2024-06-29",
+        "name": "Hair Dressing",
+        "cost": "880",
+        "quantity": 4,
+        "amount": 1500
+      },
+      {
+        "id": null,
+        "date": "2024-06-29",
+        "name": "Hair Cut",
+        "cost": 50,
+        "quantity": 3,
+        "amount": 150
+      }
   ]
 }

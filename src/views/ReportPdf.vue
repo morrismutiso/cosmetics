@@ -1,5 +1,5 @@
 <template>
     <div>
-        heloo sales list
+        This is my products' report
     </div>
 </template>

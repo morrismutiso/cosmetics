@@ -13,7 +13,9 @@ import ExpenseList from './views/ExpenseList.vue';
 import AboutPage from './components/AboutPage.vue';
 import AuthorPage from './components/AuthorPage.vue';
 import Pos from './views/POS.vue';
-import SalesList from './views/SalesList.vue';
+import SalesList from './views/SalesListProducts.vue';
+import ServicesList from './views/SalesListServices.vue';
+import ReportsPage from './views/Reports.vue';
 
 const routes = [
     {
@@ -77,8 +79,8 @@ const routes = [
         path:"/new product"
     },
     {
-        name:"Reports",
-        component:Add,
+        name:"ReportsPage",
+        component:ReportsPage,
         path:"/reports"
     },
     {
@@ -100,6 +102,11 @@ const routes = [
         name:"SalesList",
         component:SalesList,
         path:"/saleslist",
+    }, 
+    {
+        name:"ServicesList",
+        component:ServicesList,
+        path:"/servicesList",
     }, 
 ];
 

@@ -5,7 +5,7 @@
      Services
     </h1>
     <router-link to="/products"><button style="background:#1f155b;color:#fff">Switch To Products</button></router-link>
-    <router-link to="/new product"><button>New Product + </button></router-link>
+    <router-link to="/new product"><button>New Service + </button></router-link>
     </div>
     <table border=".5">
       <thead>
@@ -48,7 +48,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "ProductsPage",
+  name: "ServicePage",
   data() {
     return {
       services: [],

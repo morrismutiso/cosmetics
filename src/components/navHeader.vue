@@ -29,22 +29,21 @@
           </div>
           <div>
             <router-link to="" @click="toggleMenu1" style="color: #1f155b;" class="regdiv">
-              <img src="../assets/images/registration.png" alt="" />
+              <img src="../assets/images/sales.png" alt="" />
               <li>Sales</li></router-link>
             <div class="dropdown" :style="{display: showhide1}">
               <router-link to="/pos"><li>POS</li></router-link>
-              <router-link to="/saleslist"><li>Sales List</li></router-link>
+              <router-link to="/saleslist"><li>Sales-List-Products</li></router-link>
+              <router-link to="/servicesList"><li>Sales-List-Services</li></router-link>
             </div>
           </div>
-            <router-link to="/about">
-            <img src="../assets/images/expenses.png" alt="" />
-            <li class="link">Appointments</li></router-link>
           <router-link to="/expenses">
             <img src="../assets/images/expenses.png" alt="" />
             <li class="link">Expenses</li></router-link>
-          <router-link to="/products">
+          <router-link to="/reports">
             <img src="../assets/images/reports.png" alt="" />
-            <li class="link">Reports</li></router-link>
+            <li class="link">Reports</li>
+          </router-link>
           <router-link to="/about">
             <img src="../assets/images/about.png" alt="" />
             <li class="link">About</li></router-link>
