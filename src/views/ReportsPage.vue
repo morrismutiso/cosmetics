@@ -15,8 +15,8 @@
         </form>
         <form class="reportbyExpense" @submit.prevent="generateExpenseReport">
             <span>By Expenses</span>
-             From:<input type="date" v-model="startDate1" required>
-            To:<input type="date" v-model="endDate1" required>
+             From:<input type="date" v-model="startDate2" required>
+            To:<input type="date" v-model="endDate2" required>
             <button type="submit">Generate</button>
         </form>
     </div>
@@ -33,6 +33,10 @@ export default {
   return {
     startDate: '',
     endDate: '',
+    startDate1: '',
+    endDate1: '',
+    startDate2: '',
+    endDate2: '',
     salesProducts: [],
     salesServices: [],
     expenses: [],
@@ -69,13 +73,12 @@ methods: {
       } catch (error) {
         console.error('Error fetching sales data:', error);
       }
-   }
 },
    async generateServiceReport(){
     try {
         const response = await axios.get('http://localhost:3000/salesServices');
         this.salesServices = response.data.filter(salesServices => 
-        new Date(salesServices.date) >= new Date(this.startDate) && new Date(salesServices.date) <= new Date(this.endDate));
+        new Date(salesServices.date) >= new Date(this.startDate1) && new Date(salesServices.date) <= new Date(this.endDate1));
         const doc = new jsPDF();
         const columns = ['No', 'Date', 'Name', 'Cost'];
         // Map data to rows array
@@ -84,9 +87,9 @@ methods: {
         doc.setFontSize(18);
         doc.text('PAWAMWANI COSMETICS', doc.internal.pageSize.width /2,15, {align: 'center'});
         doc.setFontSize(14);
-        doc.text('Sales Report - By Product', doc.internal.pageSize.width /2,22, {align: 'center'});
+        doc.text('Sales Report - By Services', doc.internal.pageSize.width /2,22, {align: 'center'});
         doc.setFontSize(14);
-        doc.text(`From Date: ${this.startDate} to ${this.endDate}`, doc.internal.pageSize.width /2,28, {align: 'center'});
+        doc.text(`From Date: ${this.startDate1} to ${this.endDate1}`, doc.internal.pageSize.width /2,28, {align: 'center'});
         doc.autoTable({
             startY: 30,
             head: [columns],
@@ -106,7 +109,7 @@ methods: {
     try {
         const response = await axios.get('http://localhost:3000/expenses');
         this.expenses = response.data.filter(expenses => 
-        new Date(expenses.date) >= new Date(this.startDate) && new Date(expenses.date) <= new Date(this.endDate));
+        new Date(expenses.date) >= new Date(this.startDate2) && new Date(expenses.date) <= new Date(this.endDate2));
         const doc = new jsPDF();
         const columns = ['No', 'Date', 'Expense Name', 'Cost', 'Quantity', 'Amount'];
         // Map data to rows array
@@ -115,9 +118,9 @@ methods: {
         doc.setFontSize(18);
         doc.text('PAWAMWANI COSMETICS', doc.internal.pageSize.width /2,15, {align: 'center'});
         doc.setFontSize(14);
-        doc.text('Sales Report - By Product', doc.internal.pageSize.width /2,22, {align: 'center'});
+        doc.text('Sales Report - By Expenses', doc.internal.pageSize.width /2,22, {align: 'center'});
         doc.setFontSize(14);
-        doc.text(`From Date: ${this.startDate} to ${this.endDate}`, doc.internal.pageSize.width /2,28, {align: 'center'});
+        doc.text(`From Date: ${this.startDate2} to ${this.endDate2}`, doc.internal.pageSize.width /2,28, {align: 'center'});
         doc.autoTable({
             startY: 30,
             head: [columns],
@@ -133,6 +136,7 @@ methods: {
         console.error('Error fetching sales data:', error);
       }
    }
+}
 }
 </script>
 

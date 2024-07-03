@@ -1,21 +1,9 @@
 {
   "user": [
     {
-      "id": "1",
+      "id": 4,
       "name": "kim",
-      "email": "kim@21",
-      "password": "12"
-    },
-    {
-      "id": "2",
-      "name": "davi",
-      "email": "davi@2",
-      "password": "12"
-    },
-    {
-      "id": "3",
-      "name": "ken",
-      "email": "ken@2",
+      "email": "kim@2",
       "password": "12"
     }
   ],
