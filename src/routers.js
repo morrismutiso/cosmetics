@@ -12,10 +12,11 @@ import RegProd from './components/AddProduct.vue';
 import ExpenseList from './views/ExpenseList.vue';
 import AboutPage from './components/AboutPage.vue';
 import AuthorPage from './components/AuthorPage.vue';
-import Pos from './views/POS.vue';
+import Pos from './views/POS-products.vue';
+import PosServices from './views/POS-services.vue';
 import SalesList from './views/SalesListProducts.vue';
 import ServicesList from './views/SalesListServices.vue';
-import ReportsPage from './views/Reports.vue';
+import ReportsPage from './views/ReportsPage.vue';
 
 const routes = [
     {
@@ -96,7 +97,12 @@ const routes = [
     {
         name:"Pos",
         component:Pos,
-        path:"/pos",
+        path:"/posproducts",
+    },
+    {
+        name:"PosServices",
+        component:PosServices,
+        path:"/posservices",
     },
     {
         name:"SalesList",

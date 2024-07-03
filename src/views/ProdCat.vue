@@ -4,9 +4,10 @@
     <h1>
       Product Cartegory
     </h1>
+    <input class="search" type="search" v-model="searchQuery" placeholder="Search a cartegory..." />
     <button>New Cartegory + </button>
     </div>
-    <table border=".5">
+    <table border=".5" v-if="filteredCartegories.length">
       <thead>
         <tr>
           <th>Id</th>
@@ -14,7 +15,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in productcartegory" :key="item.id">
+      <tr v-for="item in filteredCartegories" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.cartegoryname }}</td>
         <td>
@@ -36,6 +37,7 @@
         </td>
       </tr>
     </table>
+     <p v-else>No Product Cartegory match your search option!</p>
   </div>
 </template>
 
@@ -45,8 +47,11 @@ export default {
   name: "ProdCat",
   data() {
     return {
+      cartegoryname:"",
       productcartegory: [],
       showInnerButtons: false,
+      searchQuery: "",
+      error: null
     };
   },
   async created(){
@@ -56,6 +61,15 @@ export default {
   },
     mounted(){
     this.fetchData();
+  },
+ computed: {
+    //searching logic
+    filteredCartegories() {
+        return this.productcartegory.filter(productcartegory1 => 
+        productcartegory1.id == this.searchQuery ||
+        productcartegory1.cartegoryname.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
   },
   methods:{
     async fetchData(){
@@ -74,6 +88,12 @@ export default {
 </script>
 
  <style scoped>
+.search{
+  border: #007bff 1px solid;
+  border-radius: 2px;
+  background: transparent;
+  padding: 3px;
+ }
 .prodtable {
   display: flex;
   flex-direction: column;

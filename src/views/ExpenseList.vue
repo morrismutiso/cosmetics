@@ -4,9 +4,10 @@
     <h1>
       Expenses
     </h1>
+    <input class="search" type="search" v-model="searchQuery" placeholder="Search expense..." />
     <router-link to="/new product"><button>New Expense + </button></router-link>
     </div>
-    <table border=".5">
+    <table border=".5" v-if="filteredExpenses.length">
       <thead>
         <tr>
           <th>Id</th>
@@ -15,7 +16,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in expenses" :key="item.id">
+      <tr v-for="item in filteredExpenses" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.expensename }}</td>
         <td align="center">{{ item.cost }}</td>
@@ -36,6 +37,7 @@
         </td>
       </tr>
     </table>
+    <p v-else>No expense match your search option!</p>
   </div>
     <div><router-view /></div>
 </template>
@@ -46,18 +48,31 @@ export default {
   name: "expensesPage",
   data() {
     return {
+      expensename: "",
       expenses: [],
       showInnerButtons: false,
+      searchQuery: "",
+      error: null
     };
   },
 async created(){
-    fetch('/data/db.json')
+    // fetch('/data/db.json')
     let result = await axios.get("http://localhost:3000/expenses");
       this.expenses = result.data;
    },
   mounted(){
     this.fetchData();
   },
+  computed: {
+    //searching logic
+    filteredExpenses() {
+        return this.expenses.filter(filteredExpenses1 => 
+        filteredExpenses1.id == this.searchQuery ||
+        filteredExpenses1.expensename.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
+  
   methods:{
     async fetchData(){
       try{
@@ -79,6 +94,12 @@ async created(){
 </script>
 
  <style scoped>
+ .search{
+  border: #007bff 1px solid;
+  border-radius: 2px;
+  background: transparent;
+  padding: 3px;
+ }
 .expensetable {
   display: flex;
   flex-direction: column;

@@ -4,9 +4,10 @@
     <h1>
       Users
     </h1>
-    <button>New User + </button>
+    <input class="search" type="search" v-model="searchQuery" placeholder="Search users..." />
+    <!-- <button>New User + </button> -->
     </div>
-  <table border=".5">
+  <table border=".5" v-if="filteredUsers.length">
     <thead>
       <tr>
         <th>Id</th>
@@ -14,7 +15,7 @@
         <th>Action</th>
       </tr>
     </thead>
-    <tr v-for="item in user" :key="item.id">
+    <tr v-for="item in filteredUsers" :key="item.id">
       <td align="center">{{ item.id }}</td>
       <td align="center">{{ item.name }}</td>
       <td>
@@ -36,6 +37,8 @@
       </td>
     </tr>
   </table>
+   <p v-else>No users match your search option!</p>
+   <!-- <p v-if="error">{{ error }}</p> -->
   </div>
 </template>
 
@@ -47,38 +50,54 @@ export default {
     return {
       name: "",
       user: [],
-      showInnerButtons: false,   
+      showInnerButtons: false, 
+      searchQuery: "",
+      error: null
+  
     };
   },
   async created(){
-    fetch('/data/db.json')
     let result = await axios.get("http://localhost:3000/user");
       this.user = result.data;
    },
   mounted(){
     this.fetchData();
   },
+  computed: {
+    //searching logic
+    filteredUsers() {
+        return this.user.filter(user1 => 
+        user1.id == this.searchQuery ||
+        user1.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
+
   methods:{
     async fetchData(){
       try{
-      const response = await axios.get('/db.json');
+      const response = await axios.get("http://localhost:3000/user");
       this.user = response.data;
     } catch(error){
+      this.error = "Error in fetching data!"
       console.error('Error fetching data:',error);
     }
     },
     async deleteItem(id){
       this.user = this.user.filter(item => item.id !== id);
       await axios.delete(`http://localhost:3000/user/${id}`);
-    },
-    showInnerBtns(id){
-      console.log("my id is", id);
     }
   }
 };
 </script>
 
  <style scoped>
+ .search{
+  border: #007bff 1px solid;
+  border-radius: 2px;
+  background: transparent;
+  padding: 3px;
+ }
 .user-table {
   display: flex;
   flex-direction: column;

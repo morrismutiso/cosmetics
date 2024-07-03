@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      Products: [],
+      services: [],
       selected: 0,
       quantity: 1,
       total: 0,
@@ -16,8 +16,8 @@ export default {
     };
   },
   async created(){
-    let result = await axios.get("http://localhost:3000/Products");
-    this.Products = result.data;
+    let result = await axios.get("http://localhost:3000/services");
+    this.services = result.data;
    },
      mounted(){
     this.fetchData();
@@ -28,10 +28,13 @@ export default {
     },
   },
   methods:{
+    showAlert(){
+        alert("You have transacted succesfully");
+    },
     async fetchData(){
       try{
-      const response = await axios.get("http://localhost:3000/Products");
-      this.Products = response.data;
+      const response = await axios.get("http://localhost:3000/services");
+      this.services = response.data;
     } catch(error){
       console.error('Error fetching data:',error);
     }
@@ -70,8 +73,8 @@ export default {
       // Set date to current timestamp using Date.now()
       this.currentDate = this.formattedDate;
       try {
-        // Send a POST request to add sale to your sales table
-        await axios.post('http://localhost:3000/sales',{
+        // Send a POST request to add sale to your services sales table
+        await axios.post('http://localhost:3000/salesServices',{
             id: null,
             date: this.currentDate,
             name: this.prodName,
@@ -101,12 +104,12 @@ export default {
     <div class="sales">
         <form class="salesform" @submit.prevent="addSale">
             <div class="salesdiv1">
-                <h3>POINT OF SALE (POS)</h3>
+                <h3>POS - SERVICES</h3>
                 <input type="text" :value="prodName" style="display:none">
                 <date-picker></date-picker>
                 <select v-model="selected" @change="getProductDetails" required>
-                    <option value= "" disabled>select a product</option>
-                    <option v-for="item in Products" :key="item.id" :value="item.cost" ref="productName">{{ item.name }}</option>
+                    <option value= "" disabled>select a service</option>
+                    <option v-for="item in services" :key="item.id" :value="item.cost" ref="productName">{{ item.name }}</option>
                 </select>
                 <div class="innerdiv1">
                     <div class="innerinput">
@@ -135,7 +138,7 @@ export default {
                     <label for="">BALANCE</label>
                     <input type="number" :value="balance" required>
                 </div>
-                <button type="submit">Complete</button>
+                <button type="submit" @click="showAlert">Complete</button>
             </div>
         </form>
     </div>
@@ -159,7 +162,7 @@ export default {
 .salesdiv1, .salesdiv2{
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    padding: 30px;
     gap: 10px;
     font-weight: 500;
     font-size: 18px;

@@ -5,9 +5,10 @@
      Products
     </h1>
     <router-link to="/services"><button style="background:#1f155b;color:#fff">Switch To Services</button></router-link>
+    <input class="search" type="search" v-model="searchQuery" placeholder="Search products..." />
     <router-link to="/add"><button>New Product + </button></router-link>
     </div>
-    <table border=".5">
+    <table border=".5" v-if="filteredProducts.length">
       <thead>
         <tr>
           <th>Id</th>
@@ -17,7 +18,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in Products" :key="item.id">
+      <tr v-for="item in filteredProducts" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.name }}</td>
         <td align="center">{{ item.cartegory }}</td>
@@ -51,8 +52,11 @@ export default {
   name: "ProductsPage",
   data() {
     return {
+      name: "",
       Products: [],
       showInnerButtons: false,
+      searchQuery: "",
+      error: null
     };
   },
   async created(){
@@ -63,27 +67,41 @@ export default {
      mounted(){
     this.fetchData();
   },
- methods:{
+  computed: {
+    //searching logic
+    filteredProducts() {
+        return this.Products.filter(Products1 => 
+        Products1.id == this.searchQuery ||
+        Products1.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
+
+  methods:{
     async fetchData(){
       try{
-      const response = await axios.get('/db.json');
+      const response = await axios.get("http://localhost:3000/Products");
       this.Products = response.data;
     } catch(error){
+      this.error = "Error in fetching data!"
       console.error('Error fetching data:',error);
     }
     },
     async deleteItem(id){
       this.Products = this.Products.filter(item => item.id !== id);
       await axios.delete(`http://localhost:3000/Products/${id}`);
-    },
-    showInnerBtns(id){
-      console.log("my id is", id);
     }
   }
 };
 </script>
 
  <style scoped>
+.search{
+  border: #007bff 1px solid;
+  border-radius: 2px;
+  background: transparent;
+  padding: 3px;
+ }
 .prodtable {
   display: flex;
   flex-direction: column;

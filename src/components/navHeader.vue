@@ -1,4 +1,13 @@
 <template>
+<div class="logoutmodal" v-show="logoutpop">
+  <div class="logoutdiv">
+    <p>Do you want to logout?</p>
+    <div class="logoutbtn">
+      <button @click="loggedout">CONFIRM</button>
+      <button @click="logoutcancel">CANCEL</button>
+    </div>
+  </div>
+</div>
   <div class="container" >
     <div class="sidebar">
       <div class="head">
@@ -32,9 +41,9 @@
               <img src="../assets/images/sales.png" alt="" />
               <li>Sales</li></router-link>
             <div class="dropdown" :style="{display: showhide1}">
-              <router-link to="/pos"><li>POS</li></router-link>
-              <router-link to="/saleslist"><li>Sales-List-Products</li></router-link>
-              <router-link to="/servicesList"><li>Sales-List-Services</li></router-link>
+              <router-link to="/posproducts"><li>POS-PRODUCTS</li></router-link>
+              <router-link to="/posservices"><li>POS-SERVICES</li></router-link>
+              <router-link to="/saleslist"><li>Sales-List</li></router-link>
             </div>
           </div>
           <router-link to="/expenses">
@@ -47,9 +56,9 @@
           <router-link to="/about">
             <img src="../assets/images/about.png" alt="" />
             <li class="link">About</li></router-link>
-          <router-link to="/login">
+          <a @click="logout" style="cursor:pointer;">
             <img src="../assets/images/logout.png" alt="" />
-            <li class="link">Logout</li></router-link>
+            <li class="link">Logout</li></a>
         </ul>
       </div>
     </div>
@@ -60,7 +69,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 const showhide = ref("none");
 const showhide1 = ref("none");
@@ -82,20 +91,61 @@ function toggleMenu1(){
     showhide1.value = "none";
   }
 }
-// import axios from "axios";
-// export default {
-//   name: "Home",
-//   methods: {
-//     logout() {
-//       localStorage.clear();
-//       this.$router.push({ name: "Login" });
-//     },
-//   },
-// };
+
+//logout logic
+const logoutpop = ref(false);
+const emit = defineEmits(['logout'])
+const logout = () =>{
+  logoutpop.value = true;
+ }
+ const loggedout = () =>{
+  logoutpop.value = false;
+  emit('logout');
+ }
+ const logoutcancel = () =>{
+  logoutpop.value = false;
+ }
 
 </script>
 
 <style scoped>
+.logoutmodal{
+  background-color: rgba(0,0,0,0.70);
+  z-index: 10;
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  font-size: 15px;
+}
+.logoutdiv{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: fit-content;
+  padding: 50px;
+}
+.logoutbtn{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.logoutbtn button{
+  border-radius: 2px;
+   background-color: rgb(110, 187, 238);
+   border: none;
+   color: blue;
+   padding: 8px;
+   cursor: pointer;
+}
+
 * {
   margin: 0;
   padding: 0;

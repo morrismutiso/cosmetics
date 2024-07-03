@@ -5,9 +5,10 @@
      Services
     </h1>
     <router-link to="/products"><button style="background:#1f155b;color:#fff">Switch To Products</button></router-link>
+    <input class="search" type="search" v-model="searchQuery" placeholder="Search service..." />
     <router-link to="/new product"><button>New Service + </button></router-link>
     </div>
-    <table border=".5">
+    <table border=".5" v-if="filteredServices.length">
       <thead>
         <tr>
           <th>Id</th>
@@ -17,7 +18,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in services" :key="item.id">
+      <tr v-for="item in filteredServices" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.name }}</td>
         <td align="center">{{ item.cartegory }}</td>
@@ -41,6 +42,7 @@
         </td>
       </tr>
     </table>
+    <p v-else>No service match your search option!</p>
   </div>
     <div><router-view /></div>
 </template>
@@ -51,8 +53,11 @@ export default {
   name: "ServicePage",
   data() {
     return {
+      name: "",
       services: [],
       showInnerButtons: false,
+      searchQuery: "",
+      error: null
     };
   },
   async created(){
@@ -63,6 +68,16 @@ export default {
   mounted(){
     this.fetchData();
   },
+  computed: {
+    //searching logic
+    filteredServices() {
+        return this.services.filter(Service1 => 
+        Service1.id == this.searchQuery ||
+        Service1.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
+
   methods:{
     async fetchData(){
       try{
@@ -84,6 +99,12 @@ export default {
 </script>
 
  <style scoped>
+.search{
+  border: #007bff 1px solid;
+  border-radius: 2px;
+  background: transparent;
+  padding: 3px;
+ }
 .prodtable {
   display: flex;
   flex-direction: column;

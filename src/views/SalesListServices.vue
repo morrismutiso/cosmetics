@@ -4,27 +4,28 @@
     <h1>
      Sales list - Services
     </h1>
+    <input class="search" type="search" v-model="searchQuery" placeholder="Search service sale..." />
+    <router-link to="/saleslist"><button style="background:#1f155b;color:#fff">Switch To Products Sales-List</button></router-link>
     </div>
-    <table border=".5">
+    <table border=".5" v-if="filteredServiceSale.length">
       <thead>
         <tr>
           <th>Id</th>
           <th>Date</th>
           <th>Service Name</th>
           <th>Cost</th>
-          <th>quantity</th>
           <th>Amount</th>
         </tr>
       </thead>
-      <tr v-for="item in servicesList" :key="item.id">
+      <tr v-for="item in filteredServiceSale" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.date }}</td>
         <td align="center">{{ item.name }}</td>
         <td align="center">{{ item.cost }}</td>
-        <td align="center">{{ item.quantity }}</td>
         <td align="center">{{ item.amount }}</td>
       </tr>
     </table>
+    <p v-else>No sales List match your search option!</p>
   </div>
     <div><router-view /></div>
 </template>
@@ -35,21 +36,33 @@ export default {
   name: "servicesList",
   data() {
     return {
-      servicesList: [],
+      name: "",
+      salesServices: [],
+      searchQuery: "",
+      error: null
     };
   },
   async created(){
-    let result = await axios.get("http://localhost:3000/servicesList");
-      this.servicesList = result.data;
+    let result = await axios.get("http://localhost:3000/salesServices");
+      this.salesServices = result.data;
    },
      mounted(){
     this.fetchData();
   },
+      computed: {
+    //searching logic
+    filteredServiceSale() {
+        return this.salesServices.filter(salesServices1 => 
+        salesServices1.id == this.searchQuery ||
+        salesServices1.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
  methods:{
     async fetchData(){
       try{
-      const response = await axios.get("http://localhost:3000/servicesList");
-      this.servicesList = response.data;
+      const response = await axios.get("http://localhost:3000/salesServices");
+      this.salesServices = response.data;
     } catch(error){
       console.error('Error fetching data:',error);
     }
@@ -59,6 +72,12 @@ export default {
 </script>
 
  <style scoped>
+.search{
+  border: #007bff 1px solid;
+  border-radius: 2px;
+  background: transparent;
+  padding: 3px;
+ }
 .prodtable {
   display: flex;
   flex-direction: column;

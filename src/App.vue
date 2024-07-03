@@ -1,13 +1,10 @@
 <!-- testing line -->
 <template>
 <div v-if="isLoggedin">
-  <div v-if="messagebox" class="msgdiv">
-  <span>{{ message }}</span>
-</div>
-<Login @success="showhidelog" />
-</div>
+  <HeaderPage @logout="backlogin"/>
+</div> 
 <div v-else>
-  <HeaderPage/>
+  <Login @success="showhidelog" />
 </div>
 </template>
 
@@ -17,21 +14,14 @@ import HeaderPage from "./components/navHeader.vue"
 import Login from "./components/LoginPage.vue"
 const isLoggedin = ref(false);
 
-const showhidelog = (msg) =>{
+const showhidelog = () =>{
   isLoggedin.value = true;
-  successMsg(msg)
+}
+const backlogin = () =>{
+  isLoggedin.value = false;
 }
 
-const messagebox = ref(false);
-const message = ref("");
 
-const successMsg = (msg) =>{
-  messagebox.value = true;
-  message.value = msg;
-  setTimeout(() => {
-    messagebox.value = false;
-  }, 5000);
-}
 </script>
 
 <style>
@@ -39,7 +29,6 @@ const successMsg = (msg) =>{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*text-align: center;*/
 }
 body{
   box-sizing: border-box;

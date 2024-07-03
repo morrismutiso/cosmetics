@@ -4,8 +4,10 @@
     <h1>
      Sales list - Products
     </h1>
+    <input class="search" type="search" v-model="searchQuery" placeholder="Search product sale..." />
+    <router-link to="/servicesList"><button style="background:#1f155b;color:#fff">Switch To Service Sales-List</button></router-link>
     </div>
-    <table border=".5">
+    <table border=".5" v-if="filteredProductSale.length">
       <thead>
         <tr>
           <th>Id</th>
@@ -16,7 +18,7 @@
           <th>Amount</th>
         </tr>
       </thead>
-      <tr v-for="item in salesProducts" :key="item.id">
+      <tr v-for="item in filteredProductSale" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.date }}</td>
         <td align="center">{{ item.name }}</td>
@@ -25,6 +27,7 @@
         <td align="center">{{ item.amount }}</td>
       </tr>
     </table>
+    <p v-else>No sales List match your search option!</p>
   </div>
     <div><router-view /></div>
 </template>
@@ -35,7 +38,10 @@ export default {
   name: "SalesList",
   data() {
     return {
+      name: "",
       salesProducts: [],
+      searchQuery: "",
+      error: null
     };
   },
   async created(){
@@ -45,6 +51,16 @@ export default {
      mounted(){
     this.fetchData();
   },
+    computed: {
+    //searching logic
+    filteredProductSale() {
+        return this.salesProducts.filter(salesProducts1 => 
+        salesProducts1.id == this.searchQuery ||
+        salesProducts1.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
+
  methods:{
     async fetchData(){
       try{
@@ -59,6 +75,12 @@ export default {
 </script>
 
  <style scoped>
+ .search{
+  border: #007bff 1px solid;
+  border-radius: 2px;
+  background: transparent;
+  padding: 3px;
+ }
 .prodtable {
   display: flex;
   flex-direction: column;

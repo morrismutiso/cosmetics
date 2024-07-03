@@ -1,67 +1,25 @@
 {
   "user": [
     {
-      "id": "cf2b",
-      "name": "Morris",
-      "email": "morris@test.com",
-      "password": ""
-    },
-    {
-      "id": "eada",
-      "name": "Daniel",
-      "email": "daniel@test.com",
-      "password": "1234"
-    },
-    {
-      "id": "1e36",
-      "name": "joseh",
-      "email": "joseh@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "2003",
+      "id": "1",
       "name": "kim",
-      "email": "kim@gmail.com",
-      "password": "12345"
+      "email": "kim@21",
+      "password": "12"
     },
     {
-      "id": "7d3e",
-      "name": "john",
-      "email": "john@test.com",
-      "password": "1111"
+      "id": "2",
+      "name": "davi",
+      "email": "davi@2",
+      "password": "12"
     },
     {
-      "id": "441a",
-      "name": "mary",
-      "email": "mary@test",
-      "password": "1234"
-    },
-    {
-      "id": "b3c2",
-      "name": "jane",
-      "email": "jane@2",
-      "password": "1234"
-    },
-    {
-      "id": "4773",
-      "name": "susan",
-      "email": "susan@test.com",
-      "password": "1234"
-    },
-    {
-      "id": "e020",
-      "name": "mose",
-      "email": "mose@2",
+      "id": "3",
+      "name": "ken",
+      "email": "ken@2",
       "password": "12"
     }
   ],
   "Products": [
-    {
-      "name": "Braids",
-      "cartegory": "Personalcare",
-      "cost": "880",
-      "id": "3"
-    },
     {
       "name": "Braids1",
       "cartegory": "Treatmentcare",
@@ -69,16 +27,16 @@
       "id": "5"
     },
     {
-      "name": "Jack",
-      "cartegory": "American",
-      "cost": 420,
-      "id": "7b6e"
-    },
-    {
       "id": "5582",
       "name": "Lines",
       "cartegory": "Spanish",
       "cost": "300"
+    },
+    {
+      "id": "ebaa",
+      "name": "babycare",
+      "cartegory": "Personal care",
+      "cost": "230"
     }
   ],
   "productcartegory": [
@@ -109,12 +67,6 @@
       "cost": "880"
     }
   ],
-  "customer": [
-    {
-      "id": "1",
-      "name": "Naivas"
-    }
-  ],
   "expenses": [
     {
       "id": "8234",
@@ -125,37 +77,61 @@
   "salesProducts": [
     {
       "id": null,
-      "date": "2024-06-29",
-      "name": "Braids",
-      "cost": "880",
-      "quantity": 4,
-      "amount": 3520
+      "date": "2024-03-02",
+      "name": "Jack",
+      "cost": 420,
+      "quantity": 2,
+      "amount": 840
     },
     {
       "id": null,
-      "date": "2024-06-29",
-      "name": "Jack",
-      "cost": 420,
-      "quantity": 3,
-      "amount": 1260
+      "date": "2024-06-02",
+      "name": "Lines",
+      "cost": "300",
+      "quantity": 1,
+      "amount": 300
+    },
+    {
+      "id": null,
+      "date": "2024-07-02",
+      "name": "Braids",
+      "cost": "880",
+      "quantity": 1,
+      "amount": 880
+    },
+    {
+      "id": null,
+      "date": "2024-07-02",
+      "name": "Lines",
+      "cost": "300",
+      "quantity": 2,
+      "amount": 600
+    },
+    {
+      "id": null,
+      "date": "2024-07-03",
+      "name": "Lines",
+      "cost": "300",
+      "quantity": 10,
+      "amount": 3000
     }
   ],
-    "servicesList": [
-      {
-        "id": null,
-        "date": "2024-06-29",
-        "name": "Hair Dressing",
-        "cost": "880",
-        "quantity": 4,
-        "amount": 1500
-      },
-      {
-        "id": null,
-        "date": "2024-06-29",
-        "name": "Hair Cut",
-        "cost": 50,
-        "quantity": 3,
-        "amount": 150
-      }
+  "salesServices": [
+    {
+      "id": null,
+      "date": "2024-07-03",
+      "name": "Braids",
+      "cost": "880",
+      "quantity": 1,
+      "amount": 880
+    },
+    {
+      "id": null,
+      "date": "2024-07-03",
+      "name": "Braids",
+      "cost": "880",
+      "quantity": 1,
+      "amount": 880
+    }
   ]
 }
