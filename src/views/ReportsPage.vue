@@ -111,7 +111,7 @@ methods: {
         this.expenses = response.data.filter(expenses => 
         new Date(expenses.date) >= new Date(this.startDate2) && new Date(expenses.date) <= new Date(this.endDate2));
         const doc = new jsPDF();
-        const columns = ['No', 'Date', 'Expense Name', 'Cost', 'Quantity', 'Amount'];
+        const columns = ['No', 'Date', 'Expense Name', 'Cost'];
         // Map data to rows array
         const rows = this.expenses.map(expenses => [expenses.id, expenses.date, expenses.expensename, expenses.cost]);
         // Set content for PDF

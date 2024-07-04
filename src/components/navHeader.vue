@@ -166,7 +166,7 @@ const logout = () =>{
   background-repeat: no-repeat;
   background-size: cover;
   padding: 24px;
-  border-radius: 10px;
+  border-radius: 5px;
   border-bottom: 1px solid #ddd;
 }
 .sidebar .head {

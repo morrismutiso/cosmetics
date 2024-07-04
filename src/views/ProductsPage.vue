@@ -6,7 +6,7 @@
     </h1>
     <router-link to="/services"><button style="background:#1f155b;color:#fff">Switch To Services</button></router-link>
     <input class="search" type="search" v-model="searchQuery" placeholder="Search products..." />
-    <router-link to="/add"><button>New Product + </button></router-link>
+    <router-link to="/addproduct"><button>New Product + </button></router-link>
     </div>
     <table border=".5" v-if="filteredProducts.length">
       <thead>
@@ -21,7 +21,7 @@
       <tr v-for="item in filteredProducts" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.name }}</td>
-        <td align="center">{{ item.cartegory }}</td>
+        <td align="center">{{ item.cartegoryname }}</td>
         <td align="center">{{ item.cost }}</td>
         <td>
           <button

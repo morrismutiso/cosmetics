@@ -6,9 +6,11 @@ import ProdCat from './views/ProdCat.vue';
 import UsersPage from './views/Users.vue';
 import Customers from './views/Customers.vue';
 import { createRouter, createWebHistory} from 'vue-router';
-import Add from './views/AddPage.vue';
+import AddProduct from './components/AddProduct.vue';
+import AddExpense from './components/AddExpense.vue';
+import AddProductCat from './components/AddProductCat.vue';
+import AddService from './components/AddService.vue';
 import Update from './components/UpdateData.vue';
-import RegProd from './components/AddProduct.vue';
 import ExpenseList from './views/ExpenseList.vue';
 import AboutPage from './components/AboutPage.vue';
 import AuthorPage from './components/AuthorPage.vue';
@@ -70,24 +72,29 @@ const routes = [
         path:"/customers"
     },
     {
-        name:"Add",
-        component:Add,
-        path:"/add"
+        name:"AddProduct",
+        component:AddProduct,
+        path:"/addproduct"
     },
     {
-        name:"RegProd",
-        component:RegProd,
-        path:"/new product"
+        name:"AddExpense",
+        component:AddExpense,
+        path:"/addexpense"
+    },
+    {
+        name:"AddProductCat",
+        component:AddProductCat,
+        path:"/addproductcat"
+    },
+    {
+        name:"AddService",
+        component:AddService,
+        path:"/addservice"
     },
     {
         name:"ReportsPage",
         component:ReportsPage,
         path:"/reports"
-    },
-    {
-        name:"Expenses",
-        component:Add,
-        path:"/expenses"
     },
     {
         name:"Update",

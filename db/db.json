@@ -1,58 +1,104 @@
 {
   "user": [
     {
-      "id": 4,
+      "id": "1",
+      "name": "davi",
+      "email": "davi@2",
+      "password": "12"
+    },
+    {
+      "id": "2",
       "name": "kim",
       "email": "kim@2",
+      "password": "12"
+    },
+    {
+      "id": 3,
+      "name": "Morris",
+      "email": "morris@2",
       "password": "12"
     }
   ],
   "Products": [
     {
       "name": "Braids1",
-      "cartegory": "Treatmentcare",
+      "cartegoryname": "Treatmentcare",
       "cost": "750",
       "id": "5"
     },
     {
-      "id": "5582",
-      "name": "Lines",
-      "cartegory": "Spanish",
+      "id": "ebaa",
+      "name": "babycare",
+      "cartegoryname": "Personal care",
+      "cost": "230"
+    },
+    {
+      "id": "e068",
+      "name": "avis",
+      "cartegoryname": "braids",
+      "cost": "100"
+    },
+    {
+      "id": "3c1f",
+      "name": "nivea",
+      "cartegoryname": "perfume",
       "cost": "300"
     },
     {
-      "id": "ebaa",
-      "name": "babycare",
-      "cartegory": "Personal care",
-      "cost": "230"
+      "id": "cfb5",
+      "name": "lip balm",
+      "cartegoryname": "skin care",
+      "cost": "200"
+    },
+    {
+      "id": "6af1",
+      "name": "movit",
+      "item": "perfume",
+      "cost": 100
     }
   ],
   "productcartegory": [
     {
-      "id": "2020",
-      "cartegoryname": "spar"
+      "id": "9650",
+      "cartegoryname": "perfume"
     },
     {
-      "id": "2c37",
-      "cartegoryname": "Rwandanese"
+      "id": "9475",
+      "cartegoryname": "Oral Care"
     },
     {
-      "id": "3030",
-      "cartegoryname": "Japanese"
+      "id": "f234",
+      "cartegoryname": "Body Care"
+    },
+    {
+      "id": "3059",
+      "cartegoryname": "Sun Care"
+    },
+    {
+      "id": "7032",
+      "cartegoryname": "Skin Care"
     }
   ],
   "services": [
     {
       "id": "1",
       "name": "Braids",
-      "cartegory": "Personalcare",
       "cost": "880"
     },
     {
       "id": "3",
       "name": "Braids2",
-      "cartegory": "Personalcare2",
       "cost": "880"
+    },
+    {
+      "id": "3f29",
+      "name": "hair cut",
+      "cost": 100
+    },
+    {
+      "id": "0869",
+      "name": "hair clean",
+      "cost": 150
     }
   ],
   "expenses": [
@@ -60,6 +106,11 @@
       "id": "8234",
       "expensename": "Transport",
       "cost": 200
+    },
+    {
+      "id": "1d75",
+      "expensename": "Lunch",
+      "cost": 500
     }
   ],
   "salesProducts": [
@@ -116,6 +167,14 @@
     {
       "id": null,
       "date": "2024-07-03",
+      "name": "Braids",
+      "cost": "880",
+      "quantity": 1,
+      "amount": 880
+    },
+    {
+      "id": null,
+      "date": "2024-07-04",
       "name": "Braids",
       "cost": "880",
       "quantity": 1,

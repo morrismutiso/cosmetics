@@ -5,7 +5,7 @@
       Expenses
     </h1>
     <input class="search" type="search" v-model="searchQuery" placeholder="Search expense..." />
-    <router-link to="/new product"><button>New Expense + </button></router-link>
+    <router-link to="/addexpense"><button>New Expense + </button></router-link>
     </div>
     <table border=".5" v-if="filteredExpenses.length">
       <thead>
@@ -29,7 +29,7 @@
             Action
           </button>
           <div class="inner-btns" v-else>
-            <router-link to="/update/"><button class="updete">Edit</button></router-link>
+            <router-link to="/expense/"><button class="updete">Edit</button></router-link>
             <button class="delete" v-on:click="deleteItem(item.id)">
               Delete
             </button>

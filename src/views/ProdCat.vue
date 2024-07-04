@@ -4,18 +4,18 @@
     <h1>
       Product Cartegory
     </h1>
-    <input class="search" type="search" v-model="searchQuery" placeholder="Search a cartegory..." />
-    <button>New Cartegory + </button>
+    <!-- <input class="search" type="search" placeholder="Search a cartegory..." /> -->
+    <router-link to="/addproductcat"><button>New Cartegory + </button></router-link>
     </div>
-    <table border=".5" v-if="filteredCartegories.length">
+    <table border=".5">
       <thead>
         <tr>
           <th>Id</th>
-          <th>Cartegoty Name</th>
+          <th>Cartegory Name</th>
           <th>Action</th>
         </tr>
       </thead>
-      <tr v-for="item in filteredCartegories" :key="item.id">
+      <tr v-for="item in productcartegory" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.cartegoryname }}</td>
         <td>
@@ -37,7 +37,7 @@
         </td>
       </tr>
     </table>
-     <p v-else>No Product Cartegory match your search option!</p>
+     <!-- <p v-else>No Product Cartegory match your search option!</p> -->
   </div>
 </template>
 
@@ -50,8 +50,6 @@ export default {
       cartegoryname:"",
       productcartegory: [],
       showInnerButtons: false,
-      searchQuery: "",
-      error: null
     };
   },
   async created(){
@@ -62,26 +60,27 @@ export default {
     mounted(){
     this.fetchData();
   },
- computed: {
-    //searching logic
-    filteredCartegories() {
-        return this.productcartegory.filter(productcartegory1 => 
-        productcartegory1.id == this.searchQuery ||
-        productcartegory1.cartegoryname.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    }
-  },
+//  computed: {
+//     //searching logic
+//     filteredCartegories() {
+//         return this.productcartegory.filter(productcartegory1 => 
+//         productcartegory1.id == this.searchQuery ||
+//         productcartegory1.cartegoryname.toLowerCase().includes(this.searchQuery.toLowerCase())
+//       );
+//     }
+//   },
   methods:{
     async fetchData(){
       try{
-      const response = await axios.get('/db.json');
+      const response = await axios.get("http://localhost:3000/productcartegory");
       this.productcartegory = response.data;
     } catch(error){
       console.error('Error fetching data:',error);
     }
     },
-    deleteItem(id){
+    async deleteItem(id){
       this.productcartegory = this.productcartegory.filter(item => item.id !== id);
+      await axios.delete(`http://localhost:3000/productcartegory/${id}`);
     }
   }
 };

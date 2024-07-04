@@ -6,14 +6,13 @@
     </h1>
     <router-link to="/products"><button style="background:#1f155b;color:#fff">Switch To Products</button></router-link>
     <input class="search" type="search" v-model="searchQuery" placeholder="Search service..." />
-    <router-link to="/new product"><button>New Service + </button></router-link>
+    <router-link to="/addservice"><button>New Service + </button></router-link>
     </div>
     <table border=".5" v-if="filteredServices.length">
       <thead>
         <tr>
           <th>Id</th>
           <th>Name</th>
-          <th>Cartegory</th>
           <th>Cost</th>
           <th>Action</th>
         </tr>
@@ -21,7 +20,6 @@
       <tr v-for="item in filteredServices" :key="item.id">
         <td align="center">{{ item.id }}</td>
         <td align="center">{{ item.name }}</td>
-        <td align="center">{{ item.cartegory }}</td>
         <td align="center">{{ item.cost }}</td>
         <td>
           <button
