@@ -13,7 +13,7 @@
       "password": "12"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Morris",
       "email": "morris@2",
       "password": "12"
@@ -25,12 +25,6 @@
       "cartegoryname": "Treatmentcare",
       "cost": "750",
       "id": "5"
-    },
-    {
-      "id": "ebaa",
-      "name": "babycare",
-      "cartegoryname": "Personal care",
-      "cost": "230"
     },
     {
       "id": "e068",
@@ -53,8 +47,44 @@
     {
       "id": "6af1",
       "name": "movit",
-      "item": "perfume",
+      "cartegoryname": "perfume",
       "cost": 100
+    },
+    {
+      "id": "8513",
+      "name": "conditioner",
+      "cartegoryname": "Body Care",
+      "cost": 1150
+    },
+    {
+      "id": "1acd",
+      "name": "Baby Care",
+      "cartegoryname": "Personal Care",
+      "cost": 200
+    },
+    {
+      "id": "cc2f",
+      "name": "Cutext remover",
+      "cartegoryname": "Treatment",
+      "cost": 150
+    },
+    {
+      "id": "fe1d",
+      "name": "Nice & Lovely",
+      "cartegoryname": "perfume",
+      "cost": 150
+    },
+    {
+      "id": "e552",
+      "name": "Blow drier",
+      "cartegoryname": "Treatment",
+      "cost": 5000
+    },
+    {
+      "id": "3ab3",
+      "name": "sink",
+      "cartegoryname": "Personal Care",
+      "cost": 2000
     }
   ],
   "productcartegory": [
@@ -77,19 +107,17 @@
     {
       "id": "7032",
       "cartegoryname": "Skin Care"
+    },
+    {
+      "id": "2278",
+      "cartegoryname": "Treatment"
+    },
+    {
+      "id": "0b58",
+      "cartegoryname": "Personal Care"
     }
   ],
   "services": [
-    {
-      "id": "1",
-      "name": "Braids",
-      "cost": "880"
-    },
-    {
-      "id": "3",
-      "name": "Braids2",
-      "cost": "880"
-    },
     {
       "id": "3f29",
       "name": "hair cut",
@@ -99,6 +127,16 @@
       "id": "0869",
       "name": "hair clean",
       "cost": 150
+    },
+    {
+      "id": "b3e7",
+      "name": "After Sale Service",
+      "cost": 200
+    },
+    {
+      "id": "aa5c",
+      "name": "maintenance",
+      "cost": 300
     }
   ],
   "expenses": [
@@ -111,17 +149,19 @@
       "id": "1d75",
       "expensename": "Lunch",
       "cost": 500
+    },
+    {
+      "id": "e8d4",
+      "expensename": "sasa",
+      "cost": 10
+    },
+    {
+      "id": "f05a",
+      "expensename": "niaje",
+      "cost": 30
     }
   ],
   "salesProducts": [
-    {
-      "id": null,
-      "date": "2024-03-02",
-      "name": "Jack",
-      "cost": 420,
-      "quantity": 2,
-      "amount": 840
-    },
     {
       "id": null,
       "date": "2024-06-02",
@@ -153,32 +193,48 @@
       "cost": "300",
       "quantity": 10,
       "amount": 3000
+    },
+    {
+      "id": null,
+      "date": "2024-07-05",
+      "name": "nivea",
+      "cost": "300",
+      "quantity": 1,
+      "amount": 300
+    },
+    {
+      "id": null,
+      "date": "2024-07-05",
+      "name": "movit",
+      "cost": 100,
+      "quantity": 5,
+      "amount": 500
     }
   ],
   "salesServices": [
     {
       "id": null,
-      "date": "2024-07-03",
-      "name": "Braids",
-      "cost": "880",
+      "date": "2024-07-05",
+      "name": "After Sale Service",
+      "cost": 200,
       "quantity": 1,
-      "amount": 880
+      "amount": 200
     },
     {
       "id": null,
-      "date": "2024-07-03",
-      "name": "Braids",
-      "cost": "880",
-      "quantity": 1,
-      "amount": 880
+      "date": "2024-07-05",
+      "name": "hair cut",
+      "cost": 100,
+      "quantity": 10,
+      "amount": 1000
     },
     {
       "id": null,
-      "date": "2024-07-04",
-      "name": "Braids",
-      "cost": "880",
+      "date": "2024-07-05",
+      "name": "After Sale Service",
+      "cost": 200,
       "quantity": 1,
-      "amount": 880
+      "amount": 200
     }
   ]
 }

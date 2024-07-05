@@ -13,7 +13,7 @@
     <label for="cost">Cost:</label>
     <input type="number" id="cost" v-model.number="cost" required>
 
-    <button type="submit">Add Product</button>
+    <button type="submit" v-on:click="addProduct">Add Product</button>
   </form>
 </template>
 
@@ -26,8 +26,7 @@ export default {
     return {
         name: '',
         selectedCategory: '',
-        // cartegoryname: '',
-        productcartegory: [],
+        // productcartegory: [],
         cost: null
       }
   },
@@ -44,14 +43,14 @@ export default {
           console.error('Error fetching categories', error);
         });
     },
-    addProduct() {
-      axios.post("http://localhost:3000/Products", {
+  async addProduct() {
+      alert('Product added successfully!');
+        this.currentDate = this.formattedDate;
+      await axios.post("http://localhost:3000/Products", {
         name: this.name,
-        item: this.selectedCategory,
+        cartegoryname: this.selectedCategory,
         cost: this.cost,
-        // alert('Product added successfully!');
       })
-      
         .then(() => {
           this.$router.push('/products'); // Redirect to product list after adding
         })

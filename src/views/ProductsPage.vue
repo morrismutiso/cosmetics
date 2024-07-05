@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       name: "",
+      cartegoryname: "",
       Products: [],
       showInnerButtons: false,
       searchQuery: "",
@@ -60,7 +61,6 @@ export default {
     };
   },
   async created(){
-    // fetch('/data/db.json')
     let result = await axios.get("http://localhost:3000/Products");
       this.Products = result.data;
    },

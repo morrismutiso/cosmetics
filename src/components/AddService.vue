@@ -2,7 +2,7 @@
     <form class="newprod" @submit.prevent="addProduct">
       <img class="logo" alt="Vue logo" src="@/assets/images/logo.jpeg" />
       <h3>Add New Service</h3>
-      <input type="text" name="name" placeholder="Expense" v-model="name" required>
+      <input type="text" name="name" placeholder="Service" v-model="name" required>
       <input type="number" name="cost" placeholder="Cost" v-model.number="cost" required>
   
       <button type="submit" v-on:click="addService">Add Service</button>
@@ -23,6 +23,7 @@
     },
   methods: {
     async addService() {
+      alert('Service added succesfully!');
         this.currentDate = this.formattedDate;
      await axios.post('http://localhost:3000/services', {
         name: this.name,

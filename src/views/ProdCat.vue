@@ -53,13 +53,13 @@ export default {
     };
   },
   async created(){
-    fetch('/data/db.json')
+    // fetch('/data/db.json')
     let result = await axios.get("http://localhost:3000/productcartegory");
       this.productcartegory = result.data;
   },
-    mounted(){
-    this.fetchData();
-  },
+  //   mounted(){
+  //   this.fetchData();
+  // },
 //  computed: {
 //     //searching logic
 //     filteredCartegories() {
@@ -70,14 +70,14 @@ export default {
 //     }
 //   },
   methods:{
-    async fetchData(){
-      try{
-      const response = await axios.get("http://localhost:3000/productcartegory");
-      this.productcartegory = response.data;
-    } catch(error){
-      console.error('Error fetching data:',error);
-    }
-    },
+    // async fetchData(){
+    //   try{
+    //   const response = await axios.get("http://localhost:3000/productcartegory");
+    //   this.productcartegory = response.data;
+    // } catch(error){
+    //   console.error('Error fetching data:',error);
+    // }
+    // },
     async deleteItem(id){
       this.productcartegory = this.productcartegory.filter(item => item.id !== id);
       await axios.delete(`http://localhost:3000/productcartegory/${id}`);

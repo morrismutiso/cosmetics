@@ -25,7 +25,7 @@
           <button
             class="main-btn"
             v-if="!showInnerButtons"
-            @click="showInnerBtns(item.id)"
+            @click="showInnerButtons = true"
           >
             Action
           </button>
@@ -59,7 +59,6 @@ export default {
     };
   },
   async created(){
-    // fetch('/data/db.json')
     let result = await axios.get("http://localhost:3000/services");
       this.services = result.data;
    },
@@ -89,9 +88,6 @@ export default {
       this.services = this.services.filter(item => item.id !== id);
       await axios.delete(`http://localhost:3000/services/${id}`);
     },
-    showInnerBtns(id){
-      console.log("my id is", id);
-    }
   }
   };
 </script>

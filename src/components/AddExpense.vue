@@ -36,6 +36,7 @@
     // },
     async addExpenses() {
         this.currentDate = this.formattedDate;
+      alert("Expense added succesfully");
         // Set date to current timestamp using Date.now()
      await axios.post('http://localhost:3000/expenses', {
         expensename: this.expensename,
